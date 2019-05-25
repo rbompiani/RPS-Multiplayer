@@ -1,6 +1,10 @@
 // listen for auth status changes
 auth.onAuthStateChanged(user =>{
-    console.log(user);
+    if (user){
+        console.log("user logged in: ", user);
+    } else {
+        console.log("user logged out");
+    }
 });
 
 /* ---- SIGN UP --- */
@@ -30,9 +34,7 @@ const logout = $("#logout");
 logout.on("click", function(e) {
 
     e.preventDefault();
-    auth.signOut().then(() => {
-        console.log("user signed out");
-    });
+    auth.signOut();
 
 });
 
@@ -53,6 +55,6 @@ loginForm.submit(function(e){
         const modal = $("#modal-login");
         M.Modal.getInstance(modal).close();
         loginForm.trigger("reset");
-        
+
     });
 })
