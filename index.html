@@ -6,11 +6,14 @@
 
     <!-- Link jQuery-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-    
+
     <!-- Link Materialize -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <title>Rock Paper Scissors</title>
 
+    <!-- Link Custom Stylesheet-->
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    
 </head>
 <body class="grey lighten-3">
 
@@ -76,6 +79,20 @@
         <div class="modal-content center-align">
             <h4>Profile</h4>
             <div class="profile-details"></div>
+        </div>
+    </div>
+
+    <!-- RPS Game Div -->
+    <div id="game" class="container">
+        <div class="row">
+            <div id="p1 col s4">
+                <div id="p1Choice" class="choice"></div>
+                <h4 id="p1Name">Player 1</h4>
+            </div>
+            <div id="p2 col s4">
+                <div id="p2Choice" class="choice"></div>
+                <h4 id="p2Name">Player 2</h4>
+            </div>             
         </div>
     </div>
 
