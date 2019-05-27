@@ -21,11 +21,20 @@ signupForm.submit(function(e){
     // sign up the user
     auth.createUserWithEmailAndPassword(email, password).then(cred => {
 
-        const modal = $("#modal-signup");
+        // create new document in users collection with same id as authenticated user
+        return db.collection('users').doc(cred.user.uid).set({
+            bio: $("#signup-bio").val(),
+            username: $("#signup-username").val(),
+            wins: 0,
+            gameNow: null
+        });
+
+    }).then(function() {
+         const modal = $("#modal-signup");
         M.Modal.getInstance(modal).close();
         signupForm.trigger("reset");
-
     });
+
 });
 
 /* ---- LOG OUT --- */
