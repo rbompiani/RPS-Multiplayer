@@ -122,6 +122,7 @@ loginForm.submit(function(e){
 function askGame (){
     console.log("askGame ran");
     var newInst = $("<h5>");
+    newInst.addClass("col s12 center-align");
     newInst.text("Would you like to start a new match?");
     $("#instructions").html(newInst);
     var newBut = $("<button>");
@@ -224,8 +225,9 @@ function getOpponent(){
 function renderGame (){
 
     //setup new instructions
-    var newInst = $("<h5>");
-    newInst.text("Welcome back, "+username+"! Here's your game:");
+    var newInst = $("<h3>");
+    newInst.text("Welcome back, "+username);
+    newInst.addClass("col s12 center-align");
     $("#instructions").html(newInst);
     
     $("#game").show();
@@ -252,7 +254,8 @@ function renderGame (){
 /* --- Update Status --- */
 function updateStatus(){
 
-    var newStatus = $("<h5>");
+    var newStatus = $("<h4>");
+    newStatus.addClass("col s12 center-align");
     
     if(!yourChoice){
         newStatus.text("Please Make your Choice!");
@@ -264,10 +267,11 @@ function updateStatus(){
         newStatus.text("Everyone has chosen! Ready to see the results?");
         var newBut = $("<button>");
         newBut.text("Show Me!");
+        newBut.addClass("btn");
         newBut.click(shoot);
-        newStatus.append(newBut);
     }
 
+    $("#action").html(newBut);
     $("#status").html(newStatus);
 }
 
@@ -279,7 +283,7 @@ function renderButtons(){
         var newBut = $("<button>");
         newBut.attr("id", element);
         newBut.text(element);
-        newBut.addClass("col s4");
+        newBut.addClass("col s4 btn");
         newBut.hover(function(){
             $("#yourChoice").css("background-image", "url('assets/images/"+this.id+".png')");
         });
@@ -320,7 +324,8 @@ function shoot(){
 
 /* --- DETERMINE WINNER --- */
 function whoWins(){
-    var newStatus = $("<h5>");
+    var newStatus = $("<h4>");
+    newStatus.addClass("col s12 center-align")
     if(yourChoice==="rock" && oppChoice==="scissors" || yourChoice==="paper"&& oppChoice==="rock" || yourChoice==="scissors"&& oppChoice==="paper"){
         newStatus.text("you Win!");
         wins++;
@@ -346,9 +351,10 @@ function whoWins(){
     }
 
     var newBut = $("<button>");
+    newBut.addClass("btn");
     newBut.text("Find new Match!");
     newBut.click(endGame);
-    newStatus.append(newBut);
+    $("#action").html(newBut);
 
     $("#status").html(newStatus);
 }
@@ -371,6 +377,8 @@ function endGame(){
     $("#opponentName").text("");
     $("#yourChoice").css("background-image", "url('assets/images/question.png')");
     $("#yourChoice").css("opacity", ".5");
+    $("#status").empty();
+    $("#action").empty();
 
     // reset gameNow in database
     db.collection("users").doc(userID).update({
