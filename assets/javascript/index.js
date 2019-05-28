@@ -8,7 +8,26 @@ document.addEventListener('DOMContentLoaded', function (){
 
     var items = document.querySelectorAll(".collapsible");
     M.Collapsible.init(items);
+
+    const loginModal = $("#modal-login");
+    const showSign = $("#showSignUp");
+    const signupModal = $("#modal-signup");
+    const showLog = $("#showLogIn");
+
+    showLog.click(function(){
+        M.Modal.getInstance(loginModal).open();
+        M.Modal.getInstance(signupModal).close();
+    })
+
+    showSign.click(function(){
+        M.Modal.getInstance(signupModal).open();
+        M.Modal.getInstance(loginModal).close();
+    })
+    
+    
 });
+
+
 
 /* ---- FIREBASE STRUCTURE ---- 
 

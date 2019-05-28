@@ -23,16 +23,7 @@
             <a href="#" class="brand-logo">Rock Paper Scissors</a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li class="logged-in">
-                    <a href="#" class="modal-trigger" data-target="modal-profile">Profile</a>
-                </li>
-                <li class="logged-in">
                     <a href="#" id="logout">Logout</a>
-                </li>
-                <li class="logged-out">
-                    <a href="#" class="modal-trigger" data-target="modal-login">Login</a>
-                </li>
-                <li class="logged-out">
-                    <a href="#" class="modal-trigger" data-target="modal-signup">Sign Up</a>
                 </li>
             </ul>
         </div>
@@ -55,11 +46,10 @@
                     <input type="text" id="signup-username" required />
                     <label for="signup-username">Display Name</label>
                 </div>
-                <div class="input-field">
-                    <input type="text" id="signup-bio" required />
-                    <label for="signup-bio">One Line Bio</label>
-                </div>
                 <button class="btn yellow darken-2">Sign up</button>
+                <br>
+                <br>
+                <a id="showLogIn" href="#">Log In</a>
             </form>
         </div>
     </div>
@@ -77,29 +67,38 @@
                         <input type="password" id="login-password" required />
                         <label for="login-password">Choose password</label>
                     </div>
-                    <button class="btn yellow darken-2">Sign up</button>
+                    <button class="btn yellow darken-2">Log In</button>
+                    <br>
+                    <br>
+                    <a id="showSignUp" href="#">Sign up</a>
                 </form>
             </div>
         </div>
 
-     <!-- Create Profile Modal-->
-    <div id="modal-profile" class="modal">
-        <div class="modal-content center-align">
-            <h4>Profile</h4>
-            <div class="profile-details"></div>
-        </div>
+    <!-- RPS Instructions Div-->
+    <div id="instructions" class="container">
+        <h5>Write Instructions Here</h5>
+    </div>
+
+    <!-- RPS Instructions Div-->
+    <div id="status" class="container">
+        <h5>Write status here</h5>
     </div>
 
     <!-- RPS Game Div -->
     <div id="game" class="container">
         <div class="row">
-            <div id="p1 col s4">
-                <div id="p1Choice" class="choice"></div>
-                <h4 id="p1Name">Player 1</h4>
+            <div id="you" class="col s5">
+                <div id="yourChoice" class="choice"></div>
+                <h4 id="yourName">Player 1</h4>
+                <div class="options row"></div>
             </div>
-            <div id="p2 col s4">
-                <div id="p2Choice" class="choice"></div>
-                <h4 id="p2Name">Player 2</h4>
+            <div class="col s2">
+                <h4>VS</h4>
+            </div>
+            <div id="opponent" class="col s5">
+                <div id="opponentChoice" class="choice"></div>
+                <h4 id="opponentName">Player 2</h4>
             </div>             
         </div>
     </div>

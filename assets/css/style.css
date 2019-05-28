@@ -1,6 +1,17 @@
 .choice {
     width: 200px;
     height: 200px;
-    background-image : url("../images/question.PNG");
     background-size: cover;
+    display: inline-block;
+    background-image: url('../images/question.png');
+    opacity: 0.5;
+    position: relative;
+}
+
+h5 {
+    display: inline-block;
+}
+
+#game {
+    visibility: hide;
 }
