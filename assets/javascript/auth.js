@@ -11,6 +11,11 @@ var oppName;
 var oppChoice;
 var wins;
 
+// listener for db change
+db.collection('games').onSnapshot(snapshot =>{
+    getGameData();
+})
+
 // listen for auth status changes
 auth.onAuthStateChanged(user =>{
     if (user){
@@ -118,21 +123,6 @@ loginForm.submit(function(e){
     });
 })
 
-/* --- PROMPT TO START NEW GAME --- */
-function askGame (){
-    console.log("askGame ran");
-    var newInst = $("<h5>");
-    newInst.addClass("col s12 center-align");
-    newInst.text("Would you like to start a new match?");
-    $("#instructions").html(newInst);
-    var newBut = $("<button>");
-    newBut.text("Find Me a Match!");
-    newBut.on("click", function(){
-        newGame();
-    })
-    $("#instructions").append(newBut);
-}
-
 /* --- FIND/CREATE NEW GAME --- */
 function newGame(){
     console.log("finding a new match...");
@@ -169,7 +159,7 @@ function newGame(){
         // if game id isn't set, create a new game
         } else {
             console.log("no matches found! starting a new game");
-            var newGame = db.collection('games').add({
+            db.collection('games').add({
                 player1 : userID,
                 status : "waiting"
             }).then(doc =>{
@@ -278,6 +268,7 @@ function updateStatus(){
 /* --- RENDER BUTTONS --- */
 function renderButtons(){
     var buttnHolder = $("#you").find(".options");
+    buttnHolder.empty();
     var choices = ["rock","paper","scissors"];
     choices.forEach(function(element){
         var newBut = $("<button>");
@@ -349,6 +340,7 @@ function whoWins(){
             winner : oppID,
         })
     }
+    
 
     var newBut = $("<button>");
     newBut.addClass("btn");
